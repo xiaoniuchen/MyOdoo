@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- 主菜单定义 -->
+        <menuitem id="menu_utodo" name="UTodo"/>
+        <menuitem id="menu_utodo_submenu" parent="menu_utodo" name="待办事项(升级)"/>
+        <!-- 菜单动作定义 -->
+        <record id="action_utodo_task" model="ir.actions.act_window">
+            <field name="name">待办事项(升级)</field>
+            <field name="res_model">todo.task</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="target">current</field>
+        </record>
+
+         <!-- 子菜单定义 -->
+        <menuitem action="action_utodo_task" id="submenu_utodo_task"
+                  name="待办事项(升级)" parent="menu_utodo_submenu" sequence="10"/>
+    </data>
+</odoo>

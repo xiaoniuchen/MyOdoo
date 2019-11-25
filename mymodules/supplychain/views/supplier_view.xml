@@ -1,0 +1,66 @@
+<odoo>
+    <data>
+
+        <record model="ir.ui.view" id="supplychain_item_list_view">
+            <field name="name">supplychain supplier list</field>
+            <field name="model">supplychain.supplier</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="supplier_number"/>
+                    <field name="name"/>
+                    <field name="address"/>
+                    <field name="email"/>
+                    <field name="state"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="supplychain_supplier_form_view" model="ir.ui.view">
+            <field name="name">supplychain supplier form</field>
+            <field name="model">supplychain.supplier</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <form string="供应商维护">
+                    <header>
+                        <field name="state" widget="statusbar"/>
+
+                        <button name="active_btn" string="审核"
+                                type="object" class="oe_highlight"
+                                attrs="{'invisible':
+                            [('state', 'in', ['Y'])]}" groups="supplychain.supplychain_group_manager"/>
+                        <button name="draft_btn" string="取消审核"
+                                type="object" class="oe_highlight"
+                                attrs="{'invisible':
+                            [('state', 'in', ['N'])]}" groups="supplychain.supplychain_group_manager"/>
+                    </header>
+                    <sheet>
+                        <field name="img" widget='image' class="oe_avatar"
+                               options='{"preview_image": "image_medium", "size": [120, 120]}' readonly="1"/>
+                        <div class="oe_title">
+                            <h1>
+                                <field name="supplier_number" readonly="1"/>
+                            </h1>
+                        </div>
+                        <group>
+                            <group>
+                                <!--利用状态控制栏位的录入和读取权限 -->
+                                <field name="supplier_number"
+                                       attrs="{'required': [('state','=', 'N')], 'readonly': [('state','=', 'Y')]}"/>
+                                <field name="name"
+                                       attrs="{'required': [('state','=', 'N')], 'readonly': [('state','=', 'Y')]}"/>
+                                <field name="state"/>
+                            </group>
+                            <group>
+                                <!--利用状态控制栏位的录入和读取权限 -->
+                                <field name="address" class="addressbackground"
+                                       attrs="{'required': [('state','=', 'N')], 'readonly': [('state','=', 'Y')]}"/>
+                                <field name="email"
+                                       attrs="{'required': [('state','=', 'N')], 'readonly': [('state','=', 'Y')]}"/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+    </data>
+</odoo>

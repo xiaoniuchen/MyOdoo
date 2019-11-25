@@ -1,0 +1,93 @@
+<odoo>
+    <data>
+        <record id="xksystem_teacher_view_form" model="ir.ui.view">
+            <field name="name">xksystem.teacher.view.form</field>
+            <field name="model">xksystem.teacher</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <form string="Teacher">
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="name"/>
+                            </group>
+                            <group>
+                                <field name="code"/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <record id="xksystem_student_view_form" model="ir.ui.view">
+            <field name="name">xksystem.student.view.form</field>
+            <field name="model">xksystem.student</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <form string="Student">
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="name" attrs="{'readonly': [('name', '!=', False)],
+                                'required': [('name', '=', False)],}" force_save="1"/>
+                            </group>
+                            <group>
+                                <field name="code" attrs="{
+                                 'required': [('code', '=', False)],}" force_save="1"/>
+                            </group>
+                        </group>
+                        <notebook>
+                            <page string='选课明细'>
+                                <field name="student_course_line"
+                                       widget="section_and_note_one2many"
+                                       mode="tree,kanban"
+                                       confirm="确定删除此行数据?">
+                                    <tree editable="bottom">
+                                        <field name="linenumber" readonly="1"/>
+                                        <field name="course_id" />
+                                        <field name="coursecode" />
+                                    </tree>
+                                </field>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <record id="xksystem_course_view_form" model="ir.ui.view">
+            <field name="name">xksystem.course.view.form</field>
+            <field name="model">xksystem.course</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <form string="Course">
+                    <header>
+                        <button name="xk_btn" string="选课"
+                                type="object" class="oe_highlight"
+                                confirm="确定选择此门课程?"/>
+                        <button name="qxxk_btn" string="取消选课"
+                                type="object" class="oe_highlight"/>
+                    </header>
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="name"/>
+                                <field name="code"/>
+                                <field name="teachers" widget="many2many_tags"/>
+                            </group>
+                            <group>
+                                <field name="studentlimit"/>
+                                <field name="havestudent"/>
+                                <field name="course_score"/>
+                            </group>
+                        </group>
+                        <notebook>
+                            <page string="课程备注">
+                                <field name="remarks"/>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+    </data>
+</odoo>

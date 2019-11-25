@@ -1,0 +1,10 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_xksystem_student_uer,xksystem.student.user,model_xksystem_student,xksystem_group_student,1,1,0,0
+access_xksystem_student_manager,xksystem.student.manager,model_xksystem_student,xksystem_group_manager,1,1,1,1
+access_xksystem_teacher_user,xksystem.teacher.user,model_xksystem_teacher,xksystem_group_student,1,0,0,0
+access_xksystem_teacher_manager,xksystem.teacher.manager,model_xksystem_teacher,xksystem_group_manager,1,1,1,1
+access_xksystem_course_user,xksystem.course.user,model_xksystem_course,xksystem_group_student,1,0,0,0
+access_xksystem_course_manager,xksystem.course.manager,model_xksystem_course,xksystem_group_manager,1,1,1,1
+access_xksystem_stuline_user,xksystem.studentline.user,model_xksystem_studentcourseline,xksystem_group_student,1,0,0,1
+access_xksystem_stuline_manager,xksystem.studentline.manager,model_xksystem_studentcourseline,xksystem_group_manager,1,1,1,1
+

@@ -1,0 +1,5 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_supplychain_item_user,SupplyChainUser,model_supplychain_item,supplychain_group_user,1,0,0,0
+access_supplychain_item_manager,SupplyChainManager,model_supplychain_item,supplychain_group_manager,1,1,1,1
+access_supplychain_supplier_user,SupplyChainUser,model_supplychain_supplier,supplychain_group_user,1,0,0,0
+access_supplychain_supplier_manager,SupplyChainManager,model_supplychain_supplier,supplychain_group_manager,1,1,1,1

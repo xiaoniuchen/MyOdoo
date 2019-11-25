@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- 主菜单定义 -->
+        <menuitem id="supplychain_menu" name="SupplyChain"/>
+        <menuitem id="supplychain_submenu" parent="supplychain_menu" name="供应链菜单"/>
+
+        <!-- 菜单动作定义 -->
+        <record id="supplychain_item_action" model="ir.actions.act_window">
+            <field name="name">物料维护</field>
+            <field name="res_model">supplychain.item</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="target">current</field>
+        </record>
+        <record id="supplychain_supplier_action" model="ir.actions.act_window">
+            <field name="name">供应商维护</field>
+            <field name="res_model">supplychain.supplier</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="target">current</field>
+        </record>
+
+         子菜单定义
+        <menuitem action="supplychain_item_action" id="supplychain_item_submenu"
+                  name="物料维护" parent="supplychain_submenu" sequence="10"/>
+        <menuitem action="supplychain_supplier_action" id="supplychain_supplier_submenu"
+                  name="供应商维护" parent="supplychain_submenu" sequence="20"/>
+
+    </data>
+</odoo>

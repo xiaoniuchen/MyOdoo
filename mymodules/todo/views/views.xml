@@ -1,0 +1,39 @@
+<odoo>
+    <data>
+        <record id="todo_task_view_tree" model="ir.ui.view">
+            <field name="name">todo.task.view_tree</field>
+            <field name="model">todo.task</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <tree string="Todo" decoration-danger="is_expired">
+                    <field name="name"/>
+                    <field name="is_done"/>
+                    <field name="category_id"/>
+                    <field name="deadline"/>
+                    <!--可以用颜色来区分是过期-->
+                    <field name="is_expired" invisible="True"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="todo_category_view_tree" model="ir.ui.view">
+            <field name="name">todo.category.view_tree</field>
+            <field name="model">todo.category</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <tree string="Todo Category" editable="bottom">
+                    <field name="name"/>
+                    <field name="count"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="action_mark_todo_task_done" model="ir.actions.server">
+            <field name="name">标记完成</field>
+            <field name="model_id" ref="model_todo_task"/>
+            <field name="binding_model_id" ref="model_todo_task"/>
+            <field name="state">code</field>
+            <field name="code">records.write({'is_done': True})</field>
+        </record>
+    </data>
+</odoo>

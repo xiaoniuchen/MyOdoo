@@ -1,0 +1,40 @@
+<odoo>
+    <data>
+        <record id="xksystem_teacher_view_tree" model="ir.ui.view">
+            <field name="name">xksystem.teacher.view_tree</field>
+            <field name="model">xksystem.teacher</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <tree string="Teacher">
+                    <field name="name"/>
+                    <field name="code"/>
+                </tree>
+            </field>
+        </record>
+        <record id="xksystem_student_view_tree" model="ir.ui.view">
+            <field name="name">xksystem.student.view_tree</field>
+            <field name="model">xksystem.student</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <tree string="Student">
+                    <field name="name"/>
+                    <field name="code"/>
+                </tree>
+            </field>
+        </record>
+        <record id="xksystem_course_view_tree" model="ir.ui.view">
+            <field name="name">xksystem.course.view_tree</field>
+            <field name="model">xksystem.course</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <tree string="Course">
+                    <field name="name"/>
+                    <field name="code"/>
+                    <field name="teachers" widget="many2many_tags"/>
+                    <field name="studentlimit"/>
+                    <field name="havestudent"/>
+                </tree>
+            </field>
+        </record>
+    </data>
+</odoo>

@@ -1,0 +1,43 @@
+<?xml version="1.0" ?>
+<odoo>
+    <record id="module_supplychain_category" model="ir.module.category">
+        <field name="name">SupplyChain</field>
+    </record>
+
+    <!-- Supplychain User Group 组权限-->
+    <record id="supplychain_group_user" model="res.groups">
+        <field name="name">User</field>
+        <field name="category_id"
+               ref="module_supplychain_category"/>
+        <field name="implied_ids"
+               eval="[(4, ref('base.group_user'))]"/>
+    </record>
+
+    <!-- Supplychain Manager Group 组权限-->
+    <record id="supplychain_group_manager" model="res.groups">
+        <field name="name">Manager</field>
+        <field name="category_id"
+               ref="module_supplychain_category"/>
+        <field name="implied_ids"
+               eval="[(4, ref('supplychain_group_user'))]"/>
+        <field name="users"
+               eval="[(4, ref('base.user_root')),
+               (4, ref('base.user_admin'))]"/>
+    </record>
+
+    <!--记录访问规则-->
+    <record model="ir.rule" id="supplychain_item_comp_rule">
+        <field name="name">Supplychain Item multi-company</field>
+        <field name="model_id" ref="model_supplychain_item"/>
+        <field name="global" eval="True"/>
+        <field name="domain_force">['|',('company_id','=',False),('company_id','child_of',[user.company_id.id])]</field>
+    </record>
+
+    <record model="ir.rule" id="supplychain_supplier_comp_rule">
+        <field name="name">Supplychain Supplier multi-company</field>
+        <field name="model_id" ref="model_supplychain_supplier"/>
+        <field name="global" eval="True"/>
+        <field name="domain_force">['|',('company_id','=',False),('company_id','child_of',[user.company_id.id])]</field>
+    </record>
+
+</odoo>

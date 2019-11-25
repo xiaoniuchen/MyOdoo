@@ -1,0 +1,36 @@
+<odoo>
+    <data>
+        <record id="train_view_form" model="ir.ui.view">
+            <field name="name">train.view_form</field>
+            <field name="model">train.train</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <form string="Train">
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="name"/>
+                                <field name="teacher"/>
+                                <field name="date_train"/>
+                            </group>
+                            <group>
+                                <field name="num_student"/>
+                            </group>
+                        </group>
+                        <notebook>
+                            <page string='明细'>
+                                <field name="train_line">
+                                    <tree>
+                                        <field name="student"/>
+                                        <field name="is_buy"/>
+                                        <field name="wherefrom"/>
+                                    </tree>
+                                </field>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+    </data>
+</odoo>

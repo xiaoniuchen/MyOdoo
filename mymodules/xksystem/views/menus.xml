@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- 主菜单定义 -->
+        <menuitem id="menu_xksystem" name="选课系统"/>
+        <menuitem id="menu_xksystem_jwmenu" parent="menu_xksystem" name="教务管理入口"/>
+        <menuitem id="menu_xksystem_studentmenu" parent="menu_xksystem" name="学生入口"/>
+
+        <!-- 菜单动作定义 -->
+        <record id="action_teacher_wh" model="ir.actions.act_window">
+            <field name="name">教师维护</field>
+            <field name="res_model">xksystem.teacher</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="target">current</field>
+        </record>
+        <record id="action_student_wh" model="ir.actions.act_window">
+            <field name="name">学生维护</field>
+            <field name="res_model">xksystem.student</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="target">current</field>
+        </record>
+        <record id="action_course_wh" model="ir.actions.act_window">
+            <field name="name">课程维护</field>
+            <field name="res_model">xksystem.course</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="target">current</field>
+        </record>
+
+         <!-- 子菜单定义 -->
+        <menuitem action="action_teacher_wh" id="submenu_xksystem_teacher"
+                  name="教师维护" parent="menu_xksystem_jwmenu" sequence="10"/>
+        <menuitem action="action_student_wh" id="submenu_xksystem_student"
+                  name="学生维护" parent="menu_xksystem_jwmenu" sequence="20"/>
+        <menuitem action="action_course_wh" id="submenu_xksystem_course"
+                  name="课程维护" parent="menu_xksystem_jwmenu" sequence="30"/>
+    </data>
+</odoo>

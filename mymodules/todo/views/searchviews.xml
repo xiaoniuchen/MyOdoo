@@ -1,0 +1,27 @@
+<odoo>
+    <data>
+        <record id="todo_task_view_filter" model="ir.ui.view">
+            <field name="name">todo.task.view_filter</field>
+            <field name="model">todo.task</field>
+            <field name="arch" type="xml">
+                <search string="Todo">
+                    <field name="name"/>
+                    <field name="category_id"/>
+                    <separator/>
+                    <filter string="未完成" name="undone" domain="[('is_done', '=', False)]"/>
+                    <filter string="已完成" name="done" domain="[('is_done', '=', True)]"/>
+                    <separator/>
+                    <filter string="待办" name="todo" domain="[('priority', '=', 'todo')]"/>
+                    <filter string="普通" name="normal" domain="[('priority', '=', 'normal')]"/>
+                    <filter string="紧急" name="urgency" domain="[('priority', '=', 'urgency')]"/>
+                    <group string="Group By">
+                        <filter name="group_by_categoryid" string="类别"
+                                context="{'group_by': 'category_id'}"/>
+                        <filter name="group_by_priority" string="紧急程度"
+                                context="{'group_by': 'priority'}"/>
+                    </group>
+                </search>
+            </field>
+        </record>
+    </data>
+</odoo>

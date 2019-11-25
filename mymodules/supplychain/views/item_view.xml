@@ -1,0 +1,71 @@
+<odoo>
+    <data>
+
+        <record model="ir.ui.view" id="supplychain_item_list_view">
+            <field name="name">supplychain item list</field>
+            <field name="model">supplychain.item</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="item_number"/>
+                    <field name="name"/>
+                    <field name="specification"/>
+                    <field name="type"/>
+                    <field name="unit"/>
+                    <field name="warehouse"/>
+                    <field name="state"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="supplychain_item_form_view" model="ir.ui.view">
+            <field name="name">supplychain item form</field>
+            <field name="model">supplychain.item</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <form string="物料维护">
+                    <header>
+                        <!--<button name="active_btn" string="初审" type="object" class="oe_highlight"-->
+                        <!--attrs="{'invisible':[('status_flag','in',['2','4'])]}"-->
+                        <!--confirm="是否确认初审！"/>-->
+                        <field name="state" widget="statusbar" statusbar_visible="draft,active"/>
+
+                        <button name="active_btn" string="审核"
+                                type="object" class="oe_highlight"
+                                attrs="{'invisible':
+                            [('state', 'in', ['active'])]}" groups="supplychain.supplychain_group_user"/>
+                        <button name="draft_btn" string="取消审核"
+                                type="object" class="oe_highlight"
+                                attrs="{'invisible':
+                            [('state', 'in', ['draft'])]}" groups="supplychain.supplychain_group_user"/>
+                    </header>
+                    <sheet>
+                        <group col="4">
+                            <group>
+                                <!--利用状态控制栏位的录入和读取权限 -->
+                                <label string="WuLiao" for="item_number" class="fss"/>
+                                <field name="item_number" nolabel="1"
+                                       attrs="{'required': [('state','=', 'draft')], 'readonly': [('state','=', 'active')]}"/>
+                                <field name="name"
+                                       attrs="{'required': [('state','=', 'draft')], 'readonly': [('state','=', 'active')]}"/>
+                                <field name="specification"
+                                       attrs="{'required': [('state','=', 'draft')], 'readonly': [('state','=', 'active')]}"/>
+                            </group>
+                            <group>
+                                <field name="type"/>
+                                <field name="unit"
+                                       attrs="{'required': [('state','=', 'draft')], 'readonly': [('state','=', 'active')]}"/>
+                                <field name="warehouse"
+                                       attrs="{'required': [('state','=', 'draft')], 'readonly': [('state','=', 'active')]}"/>
+                            </group>
+                            <group>
+                                <field name="state"/>
+                                <field name="img" nolabel="1" widget="image" class="oe_avatar"
+                                       options='{"preview_image":"image_medium"}'/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+    </data>
+</odoo>

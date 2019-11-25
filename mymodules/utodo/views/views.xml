@@ -1,0 +1,26 @@
+<odoo>
+    <data>
+        <record id="utodo_task_view_form" model="ir.ui.view">
+            <field name="name">utodo.task.view_form</field>
+            <field name="model">todo.task</field>
+            <field name="inherit_id" ref="todo.todo_task_view_form"/>
+            <field name="arch" type="xml">
+                <field name="is_done" position="after">
+                    <field name="budget"/>
+                    <field name="manager" widget="many2many_tags"/>
+                </field>
+            </field>
+        </record>
+
+        <record id="utodo_task_view_tree" model="ir.ui.view">
+            <field name="name">utodo.task.view_tree</field>
+            <field name="model">todo.task</field>
+            <field name="inherit_id" ref="todo.todo_task_view_tree"/>
+            <field name="arch" type="xml">
+               <field name="is_done" position="after">
+                    <field name="budget"/>
+                </field>
+            </field>
+        </record>
+    </data>
+</odoo>
