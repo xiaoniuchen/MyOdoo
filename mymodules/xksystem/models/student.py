@@ -19,6 +19,7 @@ class StudentCourseLine(models.Model):
      student_id = fields.Many2one('xksystem.student',ondelete='cascade')
      course_id = fields.Many2one('xksystem.course',string='课程名称')
      coursecode = fields.Text(string='课程代码')
+     course_teacher = fields.Many2many(string='授课教师')
 
      _sql_constraints = [
           ('course_id_uniq', 'unique (student_id,course_id)', "Course already exists !"),

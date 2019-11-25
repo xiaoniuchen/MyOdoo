@@ -65,8 +65,8 @@ class course(models.Model):
                 print('此门课程已被选过了,不能重复选择！')
                 raise UserError(('你已经选过了这门课,不能重复选择！'))
             else:
-                # 防止大量并发选课,每位学生随机停止0-1秒
-                sleep_time = random.random()
+                # 防止大量并发选课,每位学生随机停止0-5秒
+                sleep_time = random.uniform(1.0,5.0)   #产生1.0--5.0之间的浮点数
                 print(sleep_time)
                 time.sleep(sleep_time)
 

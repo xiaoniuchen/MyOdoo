@@ -46,6 +46,7 @@
                                         <field name="linenumber" readonly="1"/>
                                         <field name="course_id" />
                                         <field name="coursecode" />
+                                        <field name="course_teacher"/>
                                     </tree>
                                 </field>
                             </page>
